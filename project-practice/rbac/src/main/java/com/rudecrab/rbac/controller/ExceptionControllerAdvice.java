@@ -22,6 +22,7 @@ public class ExceptionControllerAdvice {
         return new ResultVO<>(e.getResultCode(), e.getMsg());
     }
 
+    //捕捉方法参数校验里面的异常
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResultVO<String> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
         // 从异常对象中拿到ObjectError对象
