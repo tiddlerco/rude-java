@@ -40,6 +40,8 @@ public class WebConfig  implements WebMvcConfigurer {
     }
     @Bean
     public LoginInterceptor loginInterceptor() {return new LoginInterceptor();}
+
+    // 这里一定要用如此方式创建拦截器，否则拦截器中的自动注入不会生效
     @Bean
     public AuthInterceptor authInterceptor() {return new AuthInterceptor();}
 }

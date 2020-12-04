@@ -27,9 +27,20 @@ public class LoginController {
         return userService.login(user);
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        SecurityContextHolder.clearContext();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication==null){
+            log.info("--------空-------");
+        }
+        return "退出成功";
+    }
+
     @GetMapping("/test")
     public String test() {
         log.info("---test---");
+        //拿到当前登录用户
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         log.info(authentication.toString());
         return "认证通过";
